@@ -1,2 +1,2 @@
-usuario="salai"
-clave="1234"
+usuario = "salai"
+clave = "1234"

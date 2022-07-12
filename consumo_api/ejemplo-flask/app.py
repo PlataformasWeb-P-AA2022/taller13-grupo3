@@ -14,7 +14,7 @@ def los_estudiantes():
     """
     """
     r = requests.get("http://127.0.0.1:8000/api/estudiantes/",
-            auth=(usuario, clave))
+            auth=(usuario,clave))
     estudiantes = json.loads(r.content)['results']
     numero_estudiantes = json.loads(r.content)['count']
     return render_template("losestudiantes.html", estudiantes=estudiantes,
@@ -53,7 +53,7 @@ def obtener_estudiante(url):
     """
     """
     r = requests.get(url, auth=(usuario, clave))
-    nombre_estudiante = json.loads(r.content)['nombre' ]
-    apellido_estudiante = json.loads(r.content)['apellido' ]
-    cadena = "%s %s" % (nombre_estudiante, apellido_estudiante)
+    nombre_estudiante = json.loads(r.content)['nombre']
+    apellido_estudiante = json.loads(r.content)['apellido']
+    cadena = "%s %s" %(nombre_estudiante, apellido_estudiante)
     return cadena
