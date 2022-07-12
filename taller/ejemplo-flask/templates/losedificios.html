@@ -6,18 +6,20 @@
     <title>Demo</title>
   </head>
   <body>
-    <h5>Listado de edificion - {{numero_edificios}}</h5>
+    <h2>Listado de edificios - {{numero_edificios}}</h2>
 
     {% for e in edificios %}
 
     <ol>
       <li><b>Nombre: </b>{{e['nombre']}}</li>
-      <li><b>Direccion: </b>{{e['direccion']}}</li>
+      <li><b>Dirección: </b>{{e['direccion']}}</li>
       <li><b>Ciudad: </b>{{e['ciudad']}}</li>
-      <li><b>Tipo de edificio: </b>{{e['tipo_edificio']}}</li>
+      <li><b>Tipo de Edificio: </b>{{e['tipo_edificio']}}</li>
     </ol>
     <hr>
     {% endfor%}
   </body>
 </html>
+
+
 
