@@ -1,7 +1,8 @@
+
 from django.contrib import admin
 
 # Importar las clases del modelo
-from residencias.models import Edificio, Departamento
+from residencia.models import Edificio, Departamento
 
 class EdificioAdmin(admin.ModelAdmin):
 
