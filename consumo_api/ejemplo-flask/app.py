@@ -2,6 +2,7 @@ from flask import Flask, render_template
 import requests
 import json
 from config import usuario, clave
+
 app = Flask(__name__, template_folder='templates')
 
 @app.route("/")
@@ -9,52 +10,40 @@ def hello_world():
     return "<p>Hello, World!</p>"
 
 
-@app.route("/losestudiantes")
-def los_estudiantes():
+@app.route("/losedificios")
+def los_edificios():
     """
     """
-    r = requests.get("http://127.0.0.1:8000/api/estudiantes/",
+    r = requests.get("http://127.0.0.1:8000/api/edificios/",
             auth=(usuario,clave))
-    estudiantes = json.loads(r.content)['results']
-    numero_estudiantes = json.loads(r.content)['count']
-    return render_template("losestudiantes.html", estudiantes=estudiantes,
-    numero_estudiantes=numero_estudiantes)
+    edificios = json.loads(r.content)['results']
+    numero_edificios = json.loads(r.content)['count']
+    return render_template("losedificios.html", edificios=edificios,
+    numero_edificios=numero_edificios)
 
 
-@app.route("/lostelefonos")
-def los_telefonos():
-    """
-    """
-    r = requests.get("http://127.0.0.1:8000/api/numerost/",
-            auth=(usuario, clave))
-    datos = json.loads(r.content)['results']
-    numero = json.loads(r.content)['count']
-    return render_template("lostelefonos.html", datos=datos,
-    numero=numero)
 
 
-@app.route("/lostelefonosdos")
-def los_telefonos_dos():
+@app.route("/losdepartamentos")
+def losdepartamentos():
     """
     """
-    r = requests.get("http://127.0.0.1:8000/api/numerost/",
+    r = requests.get("http://127.0.0.1:8000/api/departamentos/",
             auth=(usuario, clave))
     datos = json.loads(r.content)['results']
     numero = json.loads(r.content)['count']
     datos2 = []
     for d in datos:
-        datos2.append({'telefono':d['telefono'], 'tipo':d['tipo'],
-        'estudiante': obtener_estudiante(d['estudiante'])})
-    return render_template("lostelefonosdos.html", datos=datos2,
+        datos2.append({'nomPropietario':d['nomPropietario'], 'costo':d['costo'], 'num_cuartos':d['num_cuartos'], 'edificio':d['edificio'],
+        'edificio': obtener_edificio(d['edificio'])})
+    return render_template("losdepartamentos.html", datos=datos2,
     numero=numero)
 
 # funciones ayuda
 
-def obtener_estudiante(url):
+def obtener_edificio(url):
     """
     """
     r = requests.get(url, auth=(usuario, clave))
-    nombre_estudiante = json.loads(r.content)['nombre']
-    apellido_estudiante = json.loads(r.content)['apellido']
-    cadena = "%s %s" %(nombre_estudiante, apellido_estudiante)
-    return cadena
+    edificio = json.loads(r.content)['nombre'] + "  -  " + json.loads(r.content)['direccion'] + "  -  " + json.loads(r.content)['ciudad'] + "  -  " + json.loads(r.content)['tipo_edificio']
+    return edificio
