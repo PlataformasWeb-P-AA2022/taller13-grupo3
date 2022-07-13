@@ -2,7 +2,7 @@ from django.forms import ModelForm
 from django.utils.translation import gettext_lazy as _
 from django import forms
 
-from residencias.models import Edificio, \
+from residencia.models import Edificio, \
         Departamento
 
 class EdificioForm(ModelForm):
