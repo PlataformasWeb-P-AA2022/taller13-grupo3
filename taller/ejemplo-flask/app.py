@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 import requests
 import json
-from config import user, password
+from config import usuario, clave
 
 app = Flask(__name__, template_folder='templates')
 
