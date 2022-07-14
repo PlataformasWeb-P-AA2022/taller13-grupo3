@@ -1,2 +1,2 @@
-usuario = "sala"
+usuario = "jagua"
 clave = "1234"
