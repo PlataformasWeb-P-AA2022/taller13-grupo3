@@ -15,7 +15,7 @@ def losEdificios():
     """
     """
     r = requests.get("http://127.0.0.1:8000/api/edificio/",
-                     auth=(user, password))
+                     auth=(usuario, clave))
     print(r.content)
     # print(json.loads(r.content).keys)
     edificios = json.loads(r.content)['results']
@@ -29,7 +29,7 @@ def losDepartamentos():
     """
     """
     r = requests.get("http://127.0.0.1:8000/api/departamento/",
-                     auth=(user, password))
+                     auth=(usuario, clave))
     departamentos = json.loads(r.content)['results']
     nroDepartamentos = json.loads(r.content)['count']
     departamentos2 = []
@@ -42,6 +42,6 @@ def losDepartamentos():
 def obtenerEdificio(url):
     """
     """
-    r = requests.get(url, auth=(user, password))
+    r = requests.get(url, auth=(usuario, clave))
     edificio = json.loads(r.content)['nombre'] + " - " + json.loads(r.content)['ciudad'] + " - " + json.loads(r.content)['direccion']
     return edificio

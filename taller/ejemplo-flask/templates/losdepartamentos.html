@@ -8,13 +8,13 @@
   <body>
     <h5>Listado de departamentos - {{nroDepartamentos}}</h5>
 
-    {% for e in datos %}
+    {% for d in departamentos %}
 
     <ol>
-      <li><b>Nombre del propietario: </b>{{e['nomPropietario']}}</li>
-      <li><b>Costo: </b>{{e['costo']}}</li>
-      <li><b>Número de cuartos: </b>{{e['num_cuartos']}}</li>
-      <li><b>Edificio: </b>{{e['edificio']}}</li>
+      <li><b>Nombre del propietario: </b>{{d['nombrePropietario']}}</li>
+      <li><b>Costo: </b>{{d['costoDepartamento']}}</li>
+      <li><b>Número de cuartos: </b>{{d['numeroCuartos']}}</li>
+      <li><b>Edificio: </b>{{d['edificio']}}</li>
     </ol>
     <hr>
     {% endfor%}
